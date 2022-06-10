@@ -1,8 +1,9 @@
-def Push(P, V):
-    P.append(V)
+def Push(P, V):  # Passa a lista (pilha) e o valor a ser inserido.
+    P.append(V)  # E vai dando apende a cda valor que desejar inserir
 
-def Topo(P):
-    return P[len(P)-1]
+def Topo(P):     # Passa a lista (pilha) de parametro. O topo é o último valor que foi inserido na pilha
+    return P[len(P)-1]   # Para pegar o ultimo valor da pilha pega-se o valor da posição equivalente ao tamanho da lista -1
+                         # (que traz os valores de traz pra frente)
 
 def Pop(P):
     #P.remove(valor) --> remove o valor passado por parâmetro.
@@ -10,8 +11,8 @@ def Pop(P):
 
 def Imprime(P):
     print('\nPilha:')
-    for i in range(len(P)-1, -1, -1):
-        print(f'[ {P[i]} ]')
+    for i in range(len(P)-1, -1, -1): # Anda pela lista, de traz pra frente, pois na pilha vai se retirando do último valor até chegar no primeiro inserido
+        print(f'[ {P[i]} ]')    # E vai printando o valor equivalente àquela posição da pilha
 
 def Converter(P, valor):
     while valor > 0:
@@ -26,23 +27,24 @@ def Converter(P, valor):
 
     return bin
 
-def PilhaOrdenada(P, valor):
+def PilhaOrdenada(P, valor):     # Passa a lista (pilha) e o valor a inserir (de forma ordenada)
 
     aux = []
-    while len(P) > 0 and valor > Topo(P):
-        Push(aux, Topo(P))
-        Pop(P)
-    Push(P, valor)
+    while len(P) > 0 and valor > Topo(P):  # repete até que tenha valores na lista e que o valor a inserir seja maior que o último da pilha
+        Push(aux, Topo(P))   # Vai pondo na pilha aux o topo da pilha principal (se ele for maior que o valor a inserir)
+        Pop(P)              # remove esse valor da pilha principal, e faz isso até quando os proximos valores forem maior que o valor a inserir
+    Push(P, valor)         # quando nao for mais, adiciona o valor à pilha
 
-    while len(aux) > 0:
-        Push(P, Topo(aux))
+    while len(aux) > 0:      # depois percorre a pilha aux com os valores tirados da principal
+        Push(P, Topo(aux))   # adiciona na principal o ultimo valor da aux e remove ele da aux
         Pop(aux)
 
-def Esvaziar(P):
+def Esvaziar(P):         # para esvaziar passa-se a pilha
     print('Sequência ordenada:')
-    while len(P) > 0:
-        print(Topo(P))
+    while len(P) > 0:    # faz-se até que tenha valores
+        print(Topo(P))   # vai printando o topo e removendo, até remover todos os valores e esvaziar a pilha
         Pop(P)
+
 
 #Criando pilha vazia
 pilha = []
